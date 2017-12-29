@@ -12,7 +12,6 @@ class ShowGraphViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawChart(self).drawLineChart(data: ManipulateRecord().getWeekData())
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -21,5 +20,10 @@ class ShowGraphViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        loadView()
+        drawChart(self).drawLineChart(data: ManipulateRecord().getWeekData())
+    }
+    
 }
 
