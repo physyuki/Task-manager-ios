@@ -50,13 +50,13 @@ class ManipulateRecord {
         //7日分の日付を生成
         for i in 0...6 {
             f.dateFormat = "d"
-            let date = f.string(from: now - 60*60*24 * Double(17 - i))//to6
+            let date = f.string(from: now - 60*60*24 * Double(30 - i))//to6
             weekDateInfo.append(date)
             if i > 0 {//月初には月を表示
                 if date == "1" {
                     f.dateFormat = "MMM"
                     f.locale = Locale(identifier: "ja_JP")
-                    let month = f.string(from: now - 60*60*24 * Double(17 - i))
+                    let month = f.string(from: now - 60*60*24 * Double(30 - i))
                     //年初には年を表示
                     weekDateInfo[i] = weekDateInfo[i] + "\n" + month
                 }
@@ -65,10 +65,10 @@ class ManipulateRecord {
         //最初のデータには月と年を表示
         f.dateFormat = "MMM"
         f.locale = Locale(identifier: "ja_JP")
-        let month = f.string(from: now - 60*60*24 * Double(17))
+        let month = f.string(from: now - 60*60*24 * Double(30))
         weekDateInfo[0] = weekDateInfo[0] + "\n" + month
         f.dateFormat = "y"
-        let year = f.string(from: now - 60*60*24 * Double(17))
+        let year = f.string(from: now - 60*60*24 * Double(30))
         weekDateInfo[0] = weekDateInfo[0] + "\n" + year
         
         return weekDateInfo
