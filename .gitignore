@@ -70,4 +70,4 @@ fastlane/test_output
 
 # CocoaPods
 # because over 10MB (by yuki)
-ods/Realm/core/librealmcore-ios.a
+Pods/Realm/core/librealmcore-ios.a
