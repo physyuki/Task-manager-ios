@@ -38,6 +38,7 @@ class drawChart {
             let green: CGFloat = itemInfo.green
             let blue: CGFloat = itemInfo.blue
             //データの設定
+            dataSet.drawValuesEnabled = false
             dataSet.lineWidth = 2
             dataSet.circleRadius = 4
             dataSet.drawCircleHoleEnabled = false
