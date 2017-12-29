@@ -34,8 +34,7 @@ class RecordingViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.loadView()
-        super.viewDidLoad()
+        loadView()
         itemInfo = ManipulateItem().getItemInfo()
     }
     

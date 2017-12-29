@@ -21,8 +21,7 @@ class ShowGraphViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.loadView()
-        super.viewDidLoad()
+        loadView()
         drawChart(self).drawLineChart(data: ManipulateRecord().getWeekData())
     }
     
