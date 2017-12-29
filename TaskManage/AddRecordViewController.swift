@@ -37,7 +37,14 @@ class AddRecordViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func SaveItem(_ sender: UIButton) {
-        ManipulateItem().createNewItem(name: itemName, red: red, green: green, blue: blue)
+        if itemName.isEmpty {
+            let alertController = UIAlertController(title: "",message: "項目名を入力してください", preferredStyle: UIAlertControllerStyle.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+            alertController.addAction(okButton)
+            present(alertController, animated: true, completion: nil)
+        } else {
+            ManipulateItem().createNewItem(name: itemName, red: red, green: green, blue: blue)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
