@@ -72,7 +72,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="oBh-RB-24u"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="追加" id="mFK-3D-YyQ"/>
+                    <tabBarItem key="tabBarItem" title="追加" image="add" id="mFK-3D-YyQ"/>
                     <connections>
                         <outlet property="ColorSquare" destination="NqK-1z-cN5" id="KfI-jy-Of6"/>
                         <outlet property="NameInputField" destination="8ym-D8-cwa" id="MN7-C9-UKm"/>
@@ -92,7 +92,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="統計" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="統計" image="graph" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,7 +167,7 @@
                             <outlet property="delegate" destination="ijQ-a7-gtm" id="MKd-MF-Dvu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="記録" id="y3I-xl-6WO"/>
+                    <tabBarItem key="tabBarItem" title="記録" image="record" id="y3I-xl-6WO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfM-hU-pwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,6 +194,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="add" width="16" height="16"/>
+        <image name="graph" width="16" height="16"/>
+        <image name="record" width="16" height="16"/>
     </resources>
 </document>
