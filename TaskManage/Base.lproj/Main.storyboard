@@ -45,16 +45,6 @@
                                     <action selector="ColorSlider:" destination="iTH-IP-tw4" eventType="valueChanged" id="st3-OZ-3eV"/>
                                 </connections>
                             </slider>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ym-D8-cwa">
-                                <rect key="frame" x="212" y="157" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="watchItemName:" destination="iTH-IP-tw4" eventType="editingChanged" id="hqP-1T-Xdd"/>
-                                </connections>
-                            </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NqK-1z-cN5">
                                 <rect key="frame" x="71" y="222" width="90" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -68,6 +58,16 @@
                                     <action selector="SaveItem:" destination="iTH-IP-tw4" eventType="touchUpInside" id="Qgi-vW-YAU"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="項目名を入力" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ym-D8-cwa">
+                                <rect key="frame" x="201" y="155" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="watchItemName:" destination="iTH-IP-tw4" eventType="editingChanged" id="hqP-1T-Xdd"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="oBh-RB-24u"/>
@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMS-Ao-T9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-324"/>
+            <point key="canvasLocation" x="749.60000000000002" y="-324.28785607196403"/>
         </scene>
         <!--統計-->
         <scene sceneID="wg7-f3-ORb">
