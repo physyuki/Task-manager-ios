@@ -60,6 +60,10 @@ class AddRecordViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        red = CGFloat(0.6)
+        green = CGFloat(0.3)
+        blue = CGFloat(0.2)
+        itemName = ""
         NameInputField.delegate = self
         ColorSquare.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 0.9)
     }
