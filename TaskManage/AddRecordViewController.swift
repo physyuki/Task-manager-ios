@@ -44,17 +44,16 @@ class AddRecordViewController: UIViewController, UITextFieldDelegate {
             present(alertController, animated: true, completion: nil)
         } else {
             ManipulateItem().createNewItem(name: itemName, red: red, green: green, blue: blue)
-            red = CGFloat(0.6)
-            green = CGFloat(0.3)
-            blue = CGFloat(0.2)
-            itemName = ""
             loadView()
             viewDidLoad()
         }
     }
     
+    @IBAction func watchItemName(_ sender: UITextField) {
+        itemName = NameInputField.text!
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        itemName = textField.text as! String //初期値はnil
         NameInputField.resignFirstResponder()
         return true
     }
