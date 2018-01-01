@@ -55,6 +55,8 @@ class drawChart {
         chartView.leftAxis.valueFormatter = lineChartyAxisFormatter()
         //その他設定
         chartView.legend.font = UIFont(name: "HiraginoSans-W3", size: 10)!
+        chartView.chartDescription?.text = ""
+        
         //chartView.data = LineChartData(dataSet: dataSet)　→ LineChartData(dataSets: dataSets as! [IChartDataSet])
         chartView.data = LineChartData(dataSets: dataSets as [IChartDataSet])
         viewController.view.addSubview(chartView)
