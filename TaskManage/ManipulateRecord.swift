@@ -46,29 +46,26 @@ class ManipulateRecord {
     
     func getWeekDateInfo() -> [String] {
         var weekDateInfo = [String]()
-        let f = DateFormatter()
+        let f = FormatTime()
         //7日分の日付を生成
         for i in 0...6 {
-            f.dateFormat = "d"
-            let date = f.string(from: now - 60*60*24 * Double(30 - i))//to6
+            let date = f.getDayFormat().string(from: now - 60*60*24 * Double(6 - i))
             weekDateInfo.append(date)
-            if i > 0 {//月初には月を表示
+            if i > 0 {//月初には月を表示、年初には年を表示
                 if date == "1" {
-                    f.dateFormat = "MMM"
-                    f.locale = Locale(identifier: "ja_JP")
-                    let month = f.string(from: now - 60*60*24 * Double(30 - i))
-                    //年初には年を表示
+                    let month = f.getMonthFormat().string(from: now - 60*60*24 * Double(6 - i))
                     weekDateInfo[i] = weekDateInfo[i] + "\n" + month
+                    if month == "1月" {//ここは海外向けに修正すべき
+                        let year = f.getYearFormat().string(from: now - 60*60*24 * Double(6 - i))
+                        weekDateInfo[i] = weekDateInfo[i] + "\n" + year
+                    }
                 }
             }
         }
-        //最初のデータには月と年を表示
-        f.dateFormat = "MMM"
-        f.locale = Locale(identifier: "ja_JP")
-        let month = f.string(from: now - 60*60*24 * Double(30))
+        //最初のデータには必ず月と年を表示
+        let month = f.getMonthFormat().string(from: now - 60*60*24 * Double(6))
         weekDateInfo[0] = weekDateInfo[0] + "\n" + month
-        f.dateFormat = "y"
-        let year = f.string(from: now - 60*60*24 * Double(30))
+        let year = f.getYearFormat().string(from: now - 60*60*24 * Double(6))
         weekDateInfo[0] = weekDateInfo[0] + "\n" + year
         
         return weekDateInfo

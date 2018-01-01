@@ -27,4 +27,24 @@ class FormatTime {
         return f
     }
     
+    func getDayFormat() -> DateFormatter {
+        let f = DateFormatter()
+        f.dateFormat = "d"
+        return f
+    }
+    
+    func getMonthFormat() -> DateFormatter {
+        let f = DateFormatter()
+        f.dateFormat = "MMM"
+        f.locale = Locale(identifier: "ja_JP")
+        return f
+    }
+    
+    func getYearFormat() -> DateFormatter {
+        let f = DateFormatter()
+        f.dateFormat = "y"
+        f.locale = Locale(identifier: "ja_JP")
+        return f
+    }
+    
 }
