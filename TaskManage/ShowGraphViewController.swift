@@ -22,7 +22,7 @@ class ShowGraphViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         loadView()
-        drawChart(self).drawLineChart(data: ManipulateRecord().getWeekData())
+        drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
     }
     
 }

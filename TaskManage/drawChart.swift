@@ -12,13 +12,7 @@ import RealmSwift
 
 class drawChart {
     
-    let viewController: UIViewController
-    
-    init(_ viewController: UIViewController){
-        self.viewController = viewController
-    }
-    
-    func drawLineChart(data: [String: [Double]]) {
+    func drawLineChart(data: [String: [Double]], viewController: UIViewController) {
         let rect = CGRect(x:20, y: 30, width: viewController.view.frame.width * 0.9, height: viewController.view.frame.height * 0.8)
         let chartView = LineChartView(frame: rect)
         var entries = [[ChartDataEntry]]()
