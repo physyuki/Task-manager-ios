@@ -15,6 +15,23 @@ class RecordingViewController: UITableViewController {
         return itemInfo.count
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        // データの順番を整える
+        var ds = itemInfo
+        let data = itemInfo[sourceIndexPath.row]
+        ds.remove(at: sourceIndexPath.row)
+        ds.insert(data, at: destinationIndexPath.row)
+        itemInfo = ds
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         let red: CGFloat = itemInfo[indexPath.row][2] as! CGFloat
@@ -31,6 +48,8 @@ class RecordingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        navigationItem.title = "TableView"
+        navigationItem.rightBarButtonItem = editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
