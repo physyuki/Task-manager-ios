@@ -10,9 +10,11 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
     
-    var startTime: TimeInterval = 0
+    var startTime: Date = Date()
     var timer = Timer()
-    var elapsedtime : TimeInterval = 0.0
+    let calendar = Calendar.current
+    var sec: Int = 0
+    var elapsedtime : DateComponents = DateComponents()
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -23,14 +25,14 @@ class CustomTableViewCell: UITableViewCell {
     @IBAction func startButton(_ sender: UIButton) {
         startButton.isHidden = true
         stopButton.isHidden = false
-        startTime = Date().timeIntervalSince1970
+        startTime = Date()
         startTimeLabel.text = FormatTime().getNowTime()
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true) //0.1秒おきに関数updateを呼び出す
     }
     
     @objc func update() {
-        elapsedtime = Date().timeIntervalSince1970 - startTime
-        let sec = Int(elapsedtime)
+        elapsedtime = calendar.dateComponents([.second], from: startTime, to: Date())
+        sec = elapsedtime.second!
         elapsedTimeLabel.text = String(format: "%02d:%02d", sec/60, sec%60)
     }
     

@@ -10,7 +10,7 @@ import RealmSwift
 
 class Record: Object {
     @objc dynamic var name = ""
-    @objc dynamic var start: TimeInterval = 0
-    @objc dynamic var stop: TimeInterval = 0
+    @objc dynamic var start: Date = Date()
+    @objc dynamic var stop: Date = Date()
     @objc dynamic var date: String = ""
 }
