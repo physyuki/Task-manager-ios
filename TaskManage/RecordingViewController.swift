@@ -10,21 +10,24 @@ import UIKit
 
 class RecordingViewController: UITableViewController {
     var itemInfo = [[Any]]()
+    @IBOutlet weak var naviItem: UINavigationItem!
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemInfo.count
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        print(2)
         return true
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        print(3)
         return true
     }
     
-    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        // データの順番を整える
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath){// データの順番を整える
+        print(4)
         var ds = itemInfo
         let data = itemInfo[sourceIndexPath.row]
         ds.remove(at: sourceIndexPath.row)
@@ -45,11 +48,18 @@ class RecordingViewController: UITableViewController {
         return cell
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        print(1)
+        super.setEditing(editing, animated: animated)
+        self.tableView.isEditing = editing
+        print(editing)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        navigationItem.title = "TableView"
-        navigationItem.rightBarButtonItem = editButtonItem
+        naviItem.title = "記録"
+        naviItem.rightBarButtonItem = editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
