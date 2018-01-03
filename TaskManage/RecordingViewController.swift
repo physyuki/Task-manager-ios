@@ -9,12 +9,11 @@
 import UIKit
 
 class RecordingViewController: UITableViewController {
+    let userDefaults = UserDefaults.standard
     var itemInfo = [[Any]]()
     @IBOutlet weak var naviItem: UINavigationItem!
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemInfo.count
-    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {return itemInfo.count}
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         print(2)
@@ -27,12 +26,13 @@ class RecordingViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath){// データの順番を整える
-        print(4)
-        var ds = itemInfo
+        var tempItem = itemInfo
         let data = itemInfo[sourceIndexPath.row]
-        ds.remove(at: sourceIndexPath.row)
-        ds.insert(data, at: destinationIndexPath.row)
-        itemInfo = ds
+        tempItem.remove(at: sourceIndexPath.row)
+        tempItem.insert(data, at: destinationIndexPath.row)
+        itemInfo = tempItem
+        userDefaults.set(itemInfo, forKey: "itemInfo")
+        print("保存成功")
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,7 +63,21 @@ class RecordingViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        itemInfo = ManipulateItem().getItemInfo()
+        let recentItemInfo = ManipulateItem().getItemInfo()
+        if (userDefaults.array(forKey: "itemInfo") == nil && recentItemInfo.count != 0) {
+            itemInfo = recentItemInfo
+            userDefaults.set(itemInfo, forKey: "itemInfo")
+            print("hoge1")
+        } else if (recentItemInfo.count != 0) {
+            if (recentItemInfo.count != userDefaults.array(forKey: "itemInfo")?.count) {
+                itemInfo = recentItemInfo
+                userDefaults.set(itemInfo, forKey: "itemInfo")
+                print("hoge2")
+            } else {
+                itemInfo = userDefaults.array(forKey: "itemInfo") as! [[Any]]
+                print("hoge3")
+            }
+        }
         self.tableView.reloadData()
     }
     
