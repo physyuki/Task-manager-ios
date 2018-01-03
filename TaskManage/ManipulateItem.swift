@@ -10,7 +10,6 @@ import RealmSwift
 
 class ManipulateItem {
     let realm = try! Realm()
-    var itemInfo = [[Any]]()
     
     var maxId: Int {
         return try! realm.objects(ItemInfo.self).sorted(byKeyPath: "identifier").last?.identifier ?? 0
@@ -27,7 +26,13 @@ class ManipulateItem {
         try! realm.write{ realm.add(iteminfo) }
     }
     
+    func deleteItemInfo(_ name: String) {
+        let names = realm.objects(ItemInfo.self).filter("name like '\(name)'")
+        names.forEach { name in try! realm.write() {realm.delete(name)}}
+    }
+    
     func getItemInfo() -> [[Any]] {
+        var itemInfo = [[Any]]()
         let itemInfos = realm.objects(ItemInfo.self)
         for iteminfo in itemInfos {
             itemInfo.append([iteminfo.name, iteminfo.identifier, iteminfo.red, iteminfo.green, iteminfo.blue])

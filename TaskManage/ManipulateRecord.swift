@@ -14,11 +14,16 @@ class ManipulateRecord {
     
     func recordTime (sender: UIButton, startTime: Date) {
         let record = Record()
-        record.name = (realm.object(ofType: ItemInfo.self, forPrimaryKey: sender.tag)?.name)!
+        record.name = realm.object(ofType: ItemInfo.self, forPrimaryKey: sender.tag)!.name
         record.start = startTime
         record.stop = now
         record.date = FormatTime().dateFormat().string(from: now)
         try! realm.write() { realm.add(record) }
+    }
+    
+    func deleteRecord(_ name: String) {
+        let names = realm.objects(Record.self).filter("name like '\(name)'")
+        names.forEach { name in try! realm.write() {realm.delete(name)}}
     }
     
     func getWeekData() -> [String: [Double]] {

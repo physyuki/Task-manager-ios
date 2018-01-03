@@ -10,7 +10,7 @@ import RealmSwift
 
 class ItemInfo: Object {
     @objc dynamic var identifier = 0
-    @objc dynamic var name = ""
+    @objc dynamic var name: String = ""
     @objc dynamic var red: CGFloat = CGFloat()
     @objc dynamic var green: CGFloat = CGFloat()
     @objc dynamic var blue: CGFloat = CGFloat()

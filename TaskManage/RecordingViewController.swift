@@ -27,13 +27,11 @@ class RecordingViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        print("delete")
-        // 先にデータを更新する
-        //だめだめデータベースから消さないと
-        itemInfo.remove(at: indexPath.row)
-        //userDefaults.set(itemInfo, forKey: "itemInfo")
-        // それからテーブルの更新
-        self.tableView.deleteRows(at: [indexPath], with: .fade)
+        let name = itemInfo[indexPath.row][0] as! String
+        itemInfo.remove(at: indexPath.row)// 先にデータを更新する
+        ManipulateRecord().deleteRecord(name)
+        ManipulateItem().deleteItemInfo(name)
+        self.tableView.deleteRows(at: [indexPath], with: .fade)// それからテーブルの更新
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,15 +64,12 @@ class RecordingViewController: UITableViewController {
         if (userDefaults.array(forKey: "itemInfo") == nil && recentItemInfo.count != 0) {
             itemInfo = recentItemInfo
             userDefaults.set(itemInfo, forKey: "itemInfo")
-            print("hoge1")
         } else if (recentItemInfo.count != 0) {
             if (recentItemInfo.count != userDefaults.array(forKey: "itemInfo")?.count) {
                 itemInfo = recentItemInfo
                 userDefaults.set(itemInfo, forKey: "itemInfo")
-                print("hoge2")
             } else {
                 itemInfo = userDefaults.array(forKey: "itemInfo") as! [[Any]]
-                print("hoge3")
             }
         }
         self.tableView.reloadData()
