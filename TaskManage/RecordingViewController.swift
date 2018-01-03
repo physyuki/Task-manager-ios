@@ -15,24 +15,25 @@ class RecordingViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {return itemInfo.count}
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        print(2)
-        return true
-    }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {return true}
     
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        print(3)
-        return true
-    }
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {return true}
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath){// データの順番を整える
-        var tempItem = itemInfo
         let data = itemInfo[sourceIndexPath.row]
-        tempItem.remove(at: sourceIndexPath.row)
-        tempItem.insert(data, at: destinationIndexPath.row)
-        itemInfo = tempItem
+        itemInfo.remove(at: sourceIndexPath.row)
+        itemInfo.insert(data, at: destinationIndexPath.row)
         userDefaults.set(itemInfo, forKey: "itemInfo")
-        print("保存成功")
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print("delete")
+        // 先にデータを更新する
+        //だめだめデータベースから消さないと
+        itemInfo.remove(at: indexPath.row)
+        //userDefaults.set(itemInfo, forKey: "itemInfo")
+        // それからテーブルの更新
+        self.tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,10 +50,8 @@ class RecordingViewController: UITableViewController {
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
-        print(1)
         super.setEditing(editing, animated: animated)
         self.tableView.isEditing = editing
-        print(editing)
     }
     
     override func viewDidLoad() {
