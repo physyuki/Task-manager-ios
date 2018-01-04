@@ -33,6 +33,7 @@ class RecordingViewController: UITableViewController {
             self.itemInfo.remove(at: indexPath.row)// 先にデータを更新する
             ManipulateRecord().deleteRecord(name)
             ManipulateItem().deleteItemInfo(name)
+            self.userDefaults.set(self.itemInfo, forKey: "itemInfo")
             self.tableView.deleteRows(at: [indexPath], with: .fade)// それからテーブルの更新、こうしないと落ちる
         }
         let cancelButton = UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.cancel, handler: nil)
