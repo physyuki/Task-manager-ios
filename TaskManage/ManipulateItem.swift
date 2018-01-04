@@ -40,6 +40,21 @@ class ManipulateItem {
         return itemInfo
     }
     
+    func getAllitemName() -> [String] {
+        var nameList = [String]()
+        let results: Results<ItemInfo>? = realm.objects(ItemInfo.self)
+        if results?.count != 0 {
+            for result in results! {
+                nameList.append(result.name)
+                print(1)
+            }
+        } else {
+            nameList.append("")
+            print(2)
+        }
+        return nameList
+    }
+    
     func getItemColer(forKey: String) -> ItemInfo {
         return realm.objects(ItemInfo.self).filter("name like '\(forKey)'").first!
     }

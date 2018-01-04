@@ -9,40 +9,46 @@
 import UIKit
 
 class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    // 選択肢
-    let dataList = ["iOS", "macOS", "tvOS", "Android", "Windows"]
-    @IBOutlet weak var infoView: UIView!
+    
+    @IBOutlet weak var itemNameField: UITextField!
+    var pickerView: UIPickerView = UIPickerView()
+    var nameList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // ピッカーの作成
-        let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
-        picker.center = infoView.center
-        // プロトコルの設定
-        picker.delegate = self
-        picker.dataSource = self
-        // はじめに表示する項目を指定
-        picker.selectRow(1, inComponent: 0, animated: true)
-        // 画面にピッカーを追加
-        self.view.addSubview(picker)
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.showsSelectionIndicator = true
+        
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+        toolbar.setItems([doneItem], animated: true)
+        self.itemNameField.inputView = pickerView
+        self.itemNameField.inputAccessoryView = toolbar
     }
     
-    // UIPickerViewDataSource
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {// 表示する列数
-        return 1
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {return nameList.count}
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {return nameList[row]}
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {self.itemNameField.text = nameList[row]}
+    
+    @objc func done() {self.itemNameField.endEditing(true)}
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        // アイテム表示個数を返す
-        return dataList.count
+    override func viewWillAppear(_ animated: Bool) {
+        nameList = ManipulateItem().getAllitemName()
+        self.itemNameField.text = nameList[0]
     }
     
-    // UIPickerViewDelegate
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {// 表示する文字列を返す
-        return dataList[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {// 選択時の処理
-        print(dataList[row])
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

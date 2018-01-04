@@ -93,6 +93,15 @@
                         <view key="tableHeaderView" contentMode="scaleToFill" id="rZX-Hi-toE">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gyz-8a-VA3">
+                                    <rect key="frame" x="139" y="8" width="97" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
@@ -112,7 +121,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="過去の記録" id="sXc-8b-GXQ"/>
                     <connections>
-                        <outlet property="infoView" destination="rZX-Hi-toE" id="pv7-kK-ITU"/>
+                        <outlet property="itemNameField" destination="gyz-8a-VA3" id="1sO-O4-pP3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huA-T8-GGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
