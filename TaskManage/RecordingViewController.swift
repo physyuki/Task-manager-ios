@@ -27,11 +27,20 @@ class RecordingViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let name = itemInfo[indexPath.row][0] as! String
-        itemInfo.remove(at: indexPath.row)// 先にデータを更新する
-        ManipulateRecord().deleteRecord(name)
-        ManipulateItem().deleteItemInfo(name)
-        self.tableView.deleteRows(at: [indexPath], with: .fade)// それからテーブルの更新
+        let alertController = UIAlertController(title: "注意", message: "項目を削除するとこれまでの記録も全て消えます!", preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){ (action: UIAlertAction) in
+            let name = self.itemInfo[indexPath.row][0] as! String
+            self.itemInfo.remove(at: indexPath.row)// 先にデータを更新する
+            ManipulateRecord().deleteRecord(name)
+            ManipulateItem().deleteItemInfo(name)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)// それからテーブルの更新、こうしないと落ちる
+        }
+        let cancelButton = UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelButton)
+        present(alertController,animated: true,completion: nil)
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
