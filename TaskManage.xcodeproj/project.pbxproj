@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B05815C1FE4B54000B3E2E4 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B05815B1FE4B54000B3E2E4 /* ItemInfo.swift */; };
+		1B4377241FFDF3C60062ECCC /* PastRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4377231FFDF3C60062ECCC /* PastRecordViewController.swift */; };
 		1B5141821FE4C46C001DA2A5 /* ManipulateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5141811FE4C46C001DA2A5 /* ManipulateItem.swift */; };
 		1B5141841FE4D231001DA2A5 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5141831FE4D231001DA2A5 /* RecordingViewController.swift */; };
 		1BBA25381FE4D90F00BB9932 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA25371FE4D90F00BB9932 /* CustomTableViewCell.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		1B05815B1FE4B54000B3E2E4 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
+		1B4377231FFDF3C60062ECCC /* PastRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRecordViewController.swift; sourceTree = "<group>"; };
 		1B5141811FE4C46C001DA2A5 /* ManipulateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManipulateItem.swift; sourceTree = "<group>"; };
 		1B5141831FE4D231001DA2A5 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		1BBA25371FE4D90F00BB9932 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				1BD2D8291FE4A4DE00F9EBD2 /* AddRecordViewController.swift */,
 				1BBA25371FE4D90F00BB9932 /* CustomTableViewCell.swift */,
 				1BD2D81B1FE4A41D00F9EBD2 /* Main.storyboard */,
+				1B4377231FFDF3C60062ECCC /* PastRecordViewController.swift */,
 				1BBA253B1FE527CA00BB9932 /* Record.swift */,
 				1BD2D81E1FE4A41D00F9EBD2 /* Assets.xcassets */,
 				1BD2D8201FE4A41D00F9EBD2 /* LaunchScreen.storyboard */,
@@ -251,6 +254,7 @@
 				1BD2D81A1FE4A41D00F9EBD2 /* ShowGraphViewController.swift in Sources */,
 				1BD2D8161FE4A41D00F9EBD2 /* AppDelegate.swift in Sources */,
 				1BBA253C1FE527CA00BB9932 /* Record.swift in Sources */,
+				1B4377241FFDF3C60062ECCC /* PastRecordViewController.swift in Sources */,
 				1BD2D82A1FE4A4DE00F9EBD2 /* AddRecordViewController.swift in Sources */,
 				1BBA253A1FE51BC500BB9932 /* FormatTime.swift in Sources */,
 				1BBA25381FE4D90F00BB9932 /* CustomTableViewCell.swift in Sources */,

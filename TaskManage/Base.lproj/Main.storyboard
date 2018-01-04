@@ -82,6 +82,43 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-324.28785607196403"/>
         </scene>
+        <!--過去の記録-->
+        <scene sceneID="A1K-GF-1tq">
+            <objects>
+                <tableViewController id="peA-pR-ibi" customClass="PastRecordViewController" customModule="TaskManage" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="V6w-WO-G1M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="rZX-Hi-toE">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kLD-aI-Xwi">
+                                <rect key="frame" x="0.0" y="120" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kLD-aI-Xwi" id="sBY-jN-UvC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="peA-pR-ibi" id="JxB-XW-X1A"/>
+                            <outlet property="delegate" destination="peA-pR-ibi" id="zYV-fC-JtX"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="過去の記録" id="sXc-8b-GXQ"/>
+                    <connections>
+                        <outlet property="infoView" destination="rZX-Hi-toE" id="pv7-kK-ITU"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="huA-T8-GGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1462" y="-324"/>
+        </scene>
         <!--統計-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -196,6 +233,7 @@
                         <segue destination="ijQ-a7-gtm" kind="relationship" relationship="viewControllers" id="ETC-eN-aj9"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="iTH-IP-tw4" kind="relationship" relationship="viewControllers" id="x0t-tY-uDY"/>
+                        <segue destination="peA-pR-ibi" kind="relationship" relationship="viewControllers" id="hvo-0t-7eL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
