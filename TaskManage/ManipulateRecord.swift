@@ -30,7 +30,10 @@ class ManipulateRecord {
         var records = [String]()
         let results = realm.objects(Record.self).filter("name like '\(name)'")
         for result in results {
-            records.append(String(describing: result.start) + "~" + String(describing: result.stop))
+            let f = FormatTime().logFormat()
+            let start = f.string(from: result.start)
+            let stop = f.string(from: result.stop)
+            records.append(String(describing: start) + "〜" + String(describing: stop))
         }
         return records
     }

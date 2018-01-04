@@ -24,12 +24,21 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.itemNameField.text = nameList[row]
         recordList = ManipulateRecord().getRecord(name: itemNameField.text!)
+        self.tableView.reloadData()
     }
     
     @objc func done() {self.itemNameField.endEditing(true)}
     
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
         return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {return recordList.count}
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as UITableViewCell
+        cell.textLabel?.text = recordList[indexPath.row]
+        return cell
     }
     
     override func viewDidLoad() {
@@ -50,6 +59,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
         nameList = ManipulateItem().getAllitemName()
         self.itemNameField.text = nameList[0]
         recordList = ManipulateRecord().getRecord(name: itemNameField.text!)
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

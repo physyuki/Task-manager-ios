@@ -27,6 +27,14 @@ class FormatTime {
         return f
     }
     
+    func logFormat() -> DateFormatter {
+        let f = DateFormatter()
+        f.dateStyle = .medium
+        f.timeStyle = .short
+        f.locale = Locale(identifier: "ja_JP")
+        return f
+    }
+    
     func getDayFormat() -> DateFormatter {
         let f = DateFormatter()
         f.dateFormat = "d"
