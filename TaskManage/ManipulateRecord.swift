@@ -26,6 +26,15 @@ class ManipulateRecord {
         names.forEach { name in try! realm.write() {realm.delete(name)}}
     }
     
+    func getRecord(name: String) -> [String] {
+        var records = [String]()
+        let results = realm.objects(Record.self).filter("name like '\(name)'")
+        for result in results {
+            records.append(String(describing: result.start) + "~" + String(describing: result.stop))
+        }
+        return records
+    }
+    
     func getWeekData() -> [String: [Double]] {
         let itemInfo = ManipulateItem().getItemInfo()
         var recordtime:Double = 0

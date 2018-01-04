@@ -46,11 +46,9 @@ class ManipulateItem {
         if results?.count != 0 {
             for result in results! {
                 nameList.append(result.name)
-                print(1)
             }
         } else {
             nameList.append("")
-            print(2)
         }
         return nameList
     }

@@ -13,6 +13,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var itemNameField: UITextField!
     var pickerView: UIPickerView = UIPickerView()
     var nameList = [String]()
+    var recordList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,10 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {return nameList[row]}
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {self.itemNameField.text = nameList[row]}
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.itemNameField.text = nameList[row]
+        recordList = ManipulateRecord().getRecord(name: itemNameField.text!)
+    }
     
     @objc func done() {self.itemNameField.endEditing(true)}
     
@@ -45,6 +49,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     override func viewWillAppear(_ animated: Bool) {
         nameList = ManipulateItem().getAllitemName()
         self.itemNameField.text = nameList[0]
+        recordList = ManipulateRecord().getRecord(name: itemNameField.text!)
     }
     
     override func didReceiveMemoryWarning() {
