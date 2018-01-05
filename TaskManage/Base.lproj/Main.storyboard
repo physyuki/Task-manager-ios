@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-324.28785607196403"/>
         </scene>
-        <!--過去の記録-->
+        <!--ログ-->
         <scene sceneID="A1K-GF-1tq">
             <objects>
                 <tableViewController id="peA-pR-ibi" customClass="PastRecordViewController" customModule="TaskManage" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,7 +119,7 @@
                             <outlet property="delegate" destination="peA-pR-ibi" id="zYV-fC-JtX"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="過去の記録" id="sXc-8b-GXQ"/>
+                    <tabBarItem key="tabBarItem" title="ログ" image="log" id="sXc-8b-GXQ"/>
                     <connections>
                         <outlet property="itemNameField" destination="gyz-8a-VA3" id="1sO-O4-pP3"/>
                     </connections>
@@ -164,7 +164,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xYS-BB-VLX" id="AD0-ak-2Bh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3G-0k-jE9">
@@ -253,6 +253,7 @@
     <resources>
         <image name="add" width="16" height="16"/>
         <image name="graph" width="16" height="16"/>
+        <image name="log" width="16" height="16"/>
         <image name="record" width="16" height="16"/>
     </resources>
 </document>

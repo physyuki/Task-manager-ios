@@ -54,7 +54,7 @@ class ManipulateRecord {
                     var sameDayFlag = calendar.compare(record.start, to: record.stop, toGranularity: .day) == .orderedSame
                     if sameDayFlag {//記録が日をまたがない場合の計算
                         let diff = calendar.dateComponents([.second], from: record.start, to: record.stop)
-                        recordtime = Double(diff.second!)/3600
+                        recordtime = Double(diff.second!)/60
                         sumtime[i] += recordtime
                     }
                     //記録が日をまたいだ場合の計算
@@ -74,10 +74,10 @@ class ManipulateRecord {
                         sameDayFlag = calendar.compare(record.start, to: dayEnd, toGranularity: .day) == .orderedSame
                         if sameDayFlag {
                             let diff = calendar.dateComponents([.second], from: record.start, to: dayEnd + 24 * 60  * 60)
-                            recordtime = Double(diff.second!)/3600
+                            recordtime = Double(diff.second!)/60
                         } else {
                             let diff = calendar.dateComponents([.second], from: dayEnd, to: recordEnd)
-                            recordtime = Double(diff.second!)/3600
+                            recordtime = Double(diff.second!)/60
                         }
                         if i - beforeDayCount >= 0 {//一週間以上前のデータは計算対象外
                             sumtime[i - beforeDayCount] += recordtime
