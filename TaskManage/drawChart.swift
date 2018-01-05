@@ -13,7 +13,7 @@ import RealmSwift
 class drawChart {
     
     func drawLineChart(data: [String: [Double]], viewController: UIViewController) {
-        let rect = CGRect(x:20, y: 30, width: viewController.view.frame.width * 0.9, height: viewController.view.frame.height * 0.8)
+        let rect = CGRect(x:35, y: 40, width: viewController.view.frame.width * 0.85, height: viewController.view.frame.height * 0.8)
         let chartView = LineChartView(frame: rect)
         var entries = [[ChartDataEntry]]()
         var dataSets = [LineChartDataSet]()
@@ -41,19 +41,27 @@ class drawChart {
             dataSets.append(dataSet)
         }
         //x軸の設定
+        chartView.xAxis.axisLineColor = UIColor.black
+        chartView.xAxis.axisLineWidth = CGFloat(1.0)
         chartView.xAxis.drawGridLinesEnabled = false
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.valueFormatter = lineChartxAxisFormatter()
         //y軸の設定
-        chartView.leftAxis.drawBottomYLabelEntryEnabled = false
-        chartView.rightAxis.enabled = false
-        chartView.leftAxis.drawGridLinesEnabled = false
-        chartView.rightAxis.drawGridLinesEnabled = false
-        chartView.leftAxis.axisMinimum = 0
+        chartView.rightAxis.axisLineColor = UIColor.black
+        chartView.rightAxis.axisLineWidth = CGFloat(1.0)
         chartView.rightAxis.axisMinimum = 0
-        chartView.rightAxis.drawAxisLineEnabled = false
-        chartView.leftAxis.valueFormatter = lineChartyAxisFormatter()
+        chartView.rightAxis.drawBottomYLabelEntryEnabled = false
+        chartView.rightAxis.gridColor = UIColor.gray.withAlphaComponent(0.3)
+        chartView.rightAxis.valueFormatter = lineChartyAxisFormatter()
+
+        chartView.leftAxis.enabled = false
+        chartView.leftAxis.axisMinimum = 0
+        chartView.leftAxis.drawAxisLineEnabled = false
         //その他設定
+        chartView.legend.orientation = Legend.Orientation.vertical
+        chartView.legend.drawInside = true
+        chartView.legend.horizontalAlignment = .left
+        chartView.legend.verticalAlignment = .top
         chartView.legend.font = UIFont(name: "HiraginoSans-W3", size: 10)!
         chartView.chartDescription?.text = ""
         
@@ -73,10 +81,10 @@ class drawChart {
     //y軸のラベルの値を設定
     public class lineChartyAxisFormatter: NSObject, IAxisValueFormatter{
         public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-            if Double(value).truncatingRemainder(dividingBy: 60) == 0 {
-                return String(Double(value) / 60) + "h"
+            if value.truncatingRemainder(dividingBy: 60) == 0 {
+                return String(Int(value) / 60) + "h"
             } else {
-                return String(Double(value).truncatingRemainder(dividingBy: 60)) + "min"
+                return String(Int(value.truncatingRemainder(dividingBy: 60))) + "min"
             }
         }
     }
