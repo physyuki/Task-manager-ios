@@ -76,7 +76,7 @@ class drawChart {
             if Double(value).truncatingRemainder(dividingBy: 60) == 0 {
                 return String(Double(value) / 60) + "h"
             } else {
-                return String(Double(value)) + "min"
+                return String(Double(value).truncatingRemainder(dividingBy: 60)) + "min"
             }
         }
     }
