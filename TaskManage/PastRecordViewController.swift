@@ -43,6 +43,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        itemNameField.textAlignment = .center
         
         pickerView.delegate = self
         pickerView.dataSource = self
