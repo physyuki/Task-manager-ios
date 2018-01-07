@@ -155,10 +155,12 @@ class drawChart {
     //y軸のラベルの値を設定
     public class lineChartyAxisFormatter: NSObject, IAxisValueFormatter{
         public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-            if value.truncatingRemainder(dividingBy: 60) == 0 {
-                return String(Int(value) / 60) + "h"
+            let hour: Int = Int(value) / 60
+            let min: Int = Int(value.truncatingRemainder(dividingBy: 60))
+            if Int(min) == 0 {
+                return String(hour) + "h"
             } else {
-                return String(Int(value.truncatingRemainder(dividingBy: 60))) + "min"
+                return String(hour) + "h" + String(min) + "min"
             }
         }
     }
