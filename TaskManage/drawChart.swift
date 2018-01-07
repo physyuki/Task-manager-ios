@@ -42,6 +42,7 @@ class drawChart {
             dataSets.append(dataSet)
         }
         //x軸の設定
+        chartView.xAxis.labelFont = UIFont.systemFont(ofSize: 9)
         chartView.xAxis.axisLineColor = UIColor.black
         chartView.xAxis.axisLineWidth = CGFloat(1.0)
         chartView.xAxis.drawGridLinesEnabled = false
