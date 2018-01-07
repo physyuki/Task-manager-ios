@@ -8,8 +8,72 @@
 
 import UIKit
 
-class ShowGraphViewController: UIViewController {
-   
+class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    let userDefaults = UserDefaults.standard
+    @IBOutlet weak var graphType: UITextField!
+    var pickerView: UIPickerView = UIPickerView()
+    let TYPE: [String] = ["累積グラフ(直近1週間)", "合計グラフ(直近1週間)"]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return TYPE.count
+    }
+    
+        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return TYPE[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.graphType.text = TYPE[row]
+        //userDefaults.set(TYPE[row], forKey: "graphType")
+    }
+    
+    @objc func done() {
+        initToRedraw()
+        
+        self.graphType.text = TYPE[pickerView.selectedRow(inComponent: 0)]
+        switch pickerView.selectedRow(inComponent: 0) {
+        case 0:
+            drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
+        case 1:
+            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(), viewController: self)
+        default:
+            break
+        }
+//        self.graphType.text = userDefaults.string(forKey: "graphType")!
+//        switch userDefaults.string(forKey: "graphType")! {
+//        case TYPE[0]:
+//            drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
+//        case TYPE[1]:
+//            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(), viewController: self)
+//        default:
+//            break
+//        }
+    }
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    func initToRedraw() {
+        loadView()
+        graphType.textAlignment = .center
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.showsSelectionIndicator = true
+        
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+        toolbar.setItems([doneItem], animated: true)
+        self.graphType.inputView = pickerView
+        self.graphType.inputAccessoryView = toolbar
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,9 +85,11 @@ class ShowGraphViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        loadView()
-        //drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
-        drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(), viewController: self)
+        initToRedraw()
+        pickerView.selectRow(0, inComponent: 0, animated: true)
+        
+        self.graphType.text = TYPE[0]
+        drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
     }
     
 }

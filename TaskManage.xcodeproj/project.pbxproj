@@ -16,6 +16,7 @@
 		1BBA253C1FE527CA00BB9932 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA253B1FE527CA00BB9932 /* Record.swift */; };
 		1BBA253E1FE5294500BB9932 /* ManipulateRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA253D1FE5294500BB9932 /* ManipulateRecord.swift */; };
 		1BBA25401FE53C2C00BB9932 /* drawChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA253F1FE53C2C00BB9932 /* drawChart.swift */; };
+		1BCECF7B2001A70A0085B807 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCECF7A2001A70A0085B807 /* CustomTextField.swift */; };
 		1BD2D8161FE4A41D00F9EBD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2D8151FE4A41D00F9EBD2 /* AppDelegate.swift */; };
 		1BD2D81A1FE4A41D00F9EBD2 /* ShowGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2D8191FE4A41D00F9EBD2 /* ShowGraphViewController.swift */; };
 		1BD2D81D1FE4A41D00F9EBD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD2D81B1FE4A41D00F9EBD2 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		1BBA253B1FE527CA00BB9932 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		1BBA253D1FE5294500BB9932 /* ManipulateRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManipulateRecord.swift; sourceTree = "<group>"; };
 		1BBA253F1FE53C2C00BB9932 /* drawChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawChart.swift; sourceTree = "<group>"; };
+		1BCECF7A2001A70A0085B807 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		1BD2D8121FE4A41D00F9EBD2 /* TaskManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD2D8151FE4A41D00F9EBD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BD2D8191FE4A41D00F9EBD2 /* ShowGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGraphViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				1BBA253F1FE53C2C00BB9932 /* drawChart.swift */,
 				1B5141831FE4D231001DA2A5 /* RecordingViewController.swift */,
 				1BD2D8191FE4A41D00F9EBD2 /* ShowGraphViewController.swift */,
+				1BCECF7A2001A70A0085B807 /* CustomTextField.swift */,
 				1BD2D8291FE4A4DE00F9EBD2 /* AddRecordViewController.swift */,
 				1BBA25371FE4D90F00BB9932 /* CustomTableViewCell.swift */,
 				1BD2D81B1FE4A41D00F9EBD2 /* Main.storyboard */,
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BCECF7B2001A70A0085B807 /* CustomTextField.swift in Sources */,
 				1BD2D81A1FE4A41D00F9EBD2 /* ShowGraphViewController.swift in Sources */,
 				1BD2D8161FE4A41D00F9EBD2 /* AppDelegate.swift in Sources */,
 				1BBA253C1FE527CA00BB9932 /* Record.swift in Sources */,
