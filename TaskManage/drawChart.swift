@@ -134,6 +134,67 @@ class drawChart {
         viewController.view.addSubview(chartView)
     }
     
+    func drawTimeChart(data: [String: [[[Double]]]], viewController: UIViewController) {
+        let rect = CGRect(x:35, y: 70, width: viewController.view.frame.width * 0.85, height: viewController.view.frame.height * 0.8)
+        let chartView = CandleStickChartView(frame: rect)
+        var entries = [[CandleChartDataEntry]]()
+        var dataSets = [CandleChartDataSet]()
+        var i = 0
+        for (key, value) in data {
+            //空の配列を追加する
+            entries.append([CandleChartDataEntry]())
+            for (j, datas) in value.enumerated() {
+                if datas.isEmpty {
+                    //データがない場合はダミーデータを入れて日付が消えないように対応
+                    entries[i].append(CandleChartDataEntry(x: Double(j), shadowH: 0.0, shadowL: 0.0, open: 0.0, close: 0.0))
+                }
+                for data in datas {
+                    entries[i].append(CandleChartDataEntry(x: Double(j), shadowH: data[1], shadowL: data[0], open: data[0], close: data[1]))
+                }
+            }
+            let dataSet = CandleChartDataSet(values: entries[i], label: key)
+            i += 1
+            
+            let itemInfo = ManipulateItem().getItemColer(forKey: key)
+            let red: CGFloat = itemInfo.red
+            let green: CGFloat = itemInfo.green
+            let blue: CGFloat = itemInfo.blue
+            //データの設定
+            dataSet.increasingFilled = true
+            dataSet.drawValuesEnabled = false
+            dataSet.colors = [UIColor(red: red, green: green, blue: blue, alpha: 0.9)]
+            dataSets.append(dataSet)
+        }
+        //x軸の設定
+        chartView.xAxis.labelFont = UIFont.systemFont(ofSize: 9)
+        chartView.xAxis.axisLineColor = UIColor.black
+        chartView.xAxis.axisLineWidth = CGFloat(1.0)
+        chartView.xAxis.drawGridLinesEnabled = false
+        chartView.xAxis.labelPosition = .bottom
+        chartView.xAxis.valueFormatter = lineChartxAxisFormatter()
+        //y軸の設定
+        chartView.rightAxis.axisLineColor = UIColor.black
+        chartView.rightAxis.axisLineWidth = CGFloat(1.0)
+        chartView.rightAxis.axisMinimum = 0
+        chartView.rightAxis.drawBottomYLabelEntryEnabled = false
+        chartView.rightAxis.gridColor = UIColor.gray.withAlphaComponent(0.3)
+        chartView.rightAxis.valueFormatter = lineChartyAxisFormatter()
+        
+        chartView.leftAxis.enabled = false
+        chartView.leftAxis.axisMinimum = 0
+        chartView.leftAxis.drawAxisLineEnabled = false
+        //その他設定
+        chartView.legend.orientation = Legend.Orientation.vertical
+        chartView.legend.drawInside = true
+        chartView.legend.horizontalAlignment = .left
+        chartView.legend.verticalAlignment = .top
+        chartView.legend.font = UIFont(name: "HiraginoSans-W3", size: 10)!
+        chartView.chartDescription?.text = ""
+        
+        chartView.data = CandleChartData(dataSets: dataSets as [IChartDataSet])
+        viewController.view.addSubview(chartView)
+    }
+    
     //x軸のラベルの値を設定
     public class lineChartxAxisFormatter: NSObject, IAxisValueFormatter{
         public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
@@ -141,18 +202,6 @@ class drawChart {
             return ManipulateRecord().getWeekDateInfo()[Int(value)]
         }
     }
-    
-    //x軸のラベルの値を設定
-    //    public class barChartxAxisFormatter: NSObject, IAxisValueFormatter{
-    //        let userDefaults = UserDefaults.standard
-    //        public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-    //            // 0 -> Jan, 1 -> Feb...
-    //            //print(Int(value))
-    //            print((userDefaults.array(forKey: "barChartLabel") as! [String])[Int(value)])
-    //            return (userDefaults.array(forKey: "barChartLabel") as! [String])[Int(value)]
-    //        }
-    //    }
-    
     //y軸のラベルの値を設定
     public class lineChartyAxisFormatter: NSObject, IAxisValueFormatter{
         public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
