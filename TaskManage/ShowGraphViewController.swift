@@ -34,27 +34,8 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @objc func done() {
         initToRedraw()
-        
         self.graphType.text = TYPE[pickerView.selectedRow(inComponent: 0)]
-        switch pickerView.selectedRow(inComponent: 0) {
-        case 0:
-            drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
-        case 1:
-            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(), viewController: self)
-        case 2:
-            drawChart().drawTimeChart(data: ManipulateRecord().getTimeChartData(), viewController: self)
-        default:
-            break
-        }
-//        self.graphType.text = userDefaults.string(forKey: "graphType")!
-//        switch userDefaults.string(forKey: "graphType")! {
-//        case TYPE[0]:
-//            drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
-//        case TYPE[1]:
-//            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(), viewController: self)
-//        default:
-//            break
-//        }
+        selecteChart(selectedRow: pickerView.selectedRow(inComponent: 0))
     }
     
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
@@ -88,11 +69,25 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     override func viewWillAppear(_ animated: Bool) {
         initToRedraw()
+        //ピッカーとテキストフィールドをデフォルト値に初期化
         pickerView.selectRow(0, inComponent: 0, animated: true)
-        
         self.graphType.text = TYPE[0]
-        drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
-        //drawChart().drawTimeChart(data: ManipulateRecord().getTimeChartData(), viewController: self)
+        
+        selecteChart(selectedRow: pickerView.selectedRow(inComponent: 0))
+    }
+    
+    func selecteChart(selectedRow: Int) {
+        //switch pickerView.selectedRow(inComponent: 0) {
+        switch selectedRow {
+        case 0:
+            drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
+        case 1:
+            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(), viewController: self)
+        case 2:
+            drawChart().drawTimeChart(data: ManipulateRecord().getTimeChartData(), viewController: self)
+        default:
+            break
+        }
     }
     
 }
