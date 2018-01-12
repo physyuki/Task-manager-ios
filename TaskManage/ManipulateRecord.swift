@@ -96,15 +96,15 @@ class ManipulateRecord {
         return data
     }
     
-    func getWeekSumData() -> [String: Double] {
+    func getWeekSumData(dayNumber: Int) -> [String: Double] {
         let itemInfo = ManipulateItem().getItemInfo()
         var recordtime:Double = 0
-        var sumtime = [Double](repeating: 0.0, count: 7)
+        var sumtime = [Double](repeating: 0.0, count: dayNumber)
         var data = [String: Double]()
         
         for item in itemInfo {
-            for i in 0...6 {
-                let day = FormatTime().dateFormat().string(from: now - 60*60*24 * Double(6 - i))
+            for i in 0...(dayNumber - 1) {
+                let day = FormatTime().dateFormat().string(from: now - 60*60*24 * Double((dayNumber - 1) - i))
                 let records = realm.objects(Record.self).filter("date like '\(day)'").filter("name like '\(item[0])'")
                 
                 for record in records {
@@ -145,11 +145,13 @@ class ManipulateRecord {
                     }
                 }
             }
-            for i in 1...6 {//累積値に変換
-                sumtime[i] = sumtime[i] + sumtime[i - 1]
+            if dayNumber > 1 {
+                for i in 1...(dayNumber - 1) {//累積値に変換
+                    sumtime[i] = sumtime[i] + sumtime[i - 1]
+                }
             }
             data[item[0] as! String] = sumtime.last
-            sumtime = [Double](repeating: 0.0, count: 7)
+            sumtime = [Double](repeating: 0.0, count: dayNumber)
         }
         return data
     }
@@ -167,7 +169,7 @@ class ManipulateRecord {
                 sumtime.append([[Double]]())
                 for record in records {
                     let calendar = Calendar.current
-                    var sameDayFlag = calendar.compare(record.start, to: record.stop, toGranularity: .day) == .orderedSame
+                    let sameDayFlag = calendar.compare(record.start, to: record.stop, toGranularity: .day) == .orderedSame
                     if sameDayFlag {//記録が日をまたがない場合の計算
                         //基準時間を設定
                         let hour = calendar.component(.hour, from: record.start)

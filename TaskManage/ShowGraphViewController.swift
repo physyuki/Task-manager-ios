@@ -13,7 +13,7 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     let userDefaults = UserDefaults.standard
     @IBOutlet weak var graphType: UITextField!
     var pickerView: UIPickerView = UIPickerView()
-    let TYPE: [String] = ["累積グラフ(直近1週間)", "合計グラフ(直近1週間)", "タイムチャート(直近1週間)"]
+    let TYPE: [String] = ["累積グラフ(直近1週間)", "合計グラフ(直近1週間)", "合計グラフ(本日)", "タイムチャート(直近1週間)"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -77,13 +77,14 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func selecteChart(selectedRow: Int) {
-        //switch pickerView.selectedRow(inComponent: 0) {
         switch selectedRow {
         case 0:
             drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
         case 1:
-            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(), viewController: self)
+            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(dayNumber: 7), viewController: self)
         case 2:
+            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(dayNumber: 1), viewController: self)
+        case 3:
             drawChart().drawTimeChart(data: ManipulateRecord().getTimeChartData(), viewController: self)
         default:
             break
