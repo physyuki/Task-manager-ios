@@ -45,6 +45,8 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func initToRedraw() {
         loadView()
         graphType.textAlignment = .center
+        sumTime.textAlignment = .center
+        sumTime.borderStyle = .none
         
         pickerView.delegate = self
         pickerView.dataSource = self
