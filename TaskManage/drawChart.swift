@@ -73,7 +73,7 @@ class drawChart {
     }
     
     func drawBarChart(data: [String: Double], viewController: UIViewController) {
-        let rect = CGRect(x:35, y: 70, width: viewController.view.frame.width * 0.85, height: viewController.view.frame.height * 0.8)
+        let rect = CGRect(x:35, y: 70, width: viewController.view.frame.width * 0.85, height: viewController.view.frame.height * 0.7)
         let chartView = BarChartView(frame: rect)
         var entries = [[BarChartDataEntry]]()
         var dataSets = [BarChartDataSet]()

@@ -12,6 +12,7 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     let userDefaults = UserDefaults.standard
     @IBOutlet weak var graphType: UITextField!
+    @IBOutlet weak var sumTime: UITextField!
     var pickerView: UIPickerView = UIPickerView()
     let TYPE: [String] = ["累積グラフ(直近1週間)", "合計グラフ(直近1週間)", "合計グラフ(本日)", "タイムチャート(直近1週間)"]
     
@@ -29,7 +30,6 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.graphType.text = TYPE[row]
-        //userDefaults.set(TYPE[row], forKey: "graphType")
     }
     
     @objc func done() {
@@ -82,8 +82,18 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
         case 1:
             drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(dayNumber: 7), viewController: self)
+            var allSumTime: Int = 0
+            for time in ManipulateRecord().getWeekSumData(dayNumber: 7).values {
+                allSumTime += Int(time)
+            }
+            self.sumTime.text = String(format: "合計%01dh%02dmin", allSumTime / 60, allSumTime % 60)
         case 2:
             drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(dayNumber: 1), viewController: self)
+            var allSumTime: Int = 0
+            for time in ManipulateRecord().getWeekSumData(dayNumber: 1).values {
+                allSumTime += Int(time)
+            }
+            self.sumTime.text = String(format: "合計%01dh%02dmin", allSumTime / 60, allSumTime % 60)
         case 3:
             drawChart().drawTimeChart(data: ManipulateRecord().getTimeChartData(), viewController: self)
         default:
