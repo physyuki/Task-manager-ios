@@ -33,7 +33,7 @@ class CustomTableViewCell: UITableViewCell {
     @objc func update() {
         elapsedtime = calendar.dateComponents([.second], from: startTime, to: Date())
         sec = elapsedtime.second!
-        elapsedTimeLabel.text = String(format: "%01d:%02d:%02d", sec/3600, sec/60, sec%60)
+        elapsedTimeLabel.text = String(format: "%01d:%02d:%02d", sec/3600, (sec/60)%60, sec%60)
     }
     
     @IBAction func stopButton(_ sender: UIButton) {
