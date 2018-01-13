@@ -83,24 +83,26 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         case 0:
             drawChart().drawLineChart(data: ManipulateRecord().getWeekData(), viewController: self)
         case 1:
-            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(dayNumber: 7), viewController: self)
-            var allSumTime: Int = 0
-            for time in ManipulateRecord().getWeekSumData(dayNumber: 7).values {
-                allSumTime += Int(time)
-            }
-            self.sumTime.text = String(format: "合計%01dh%02dmin", allSumTime / 60, allSumTime % 60)
+            let data = ManipulateRecord().getWeekSumData(dayNumber: 7)
+            drawChart().drawBarChart(data: data, viewController: self)
+            setSumTimeText(data)
         case 2:
-            drawChart().drawBarChart(data: ManipulateRecord().getWeekSumData(dayNumber: 1), viewController: self)
-            var allSumTime: Int = 0
-            for time in ManipulateRecord().getWeekSumData(dayNumber: 1).values {
-                allSumTime += Int(time)
-            }
-            self.sumTime.text = String(format: "合計%01dh%02dmin", allSumTime / 60, allSumTime % 60)
+            let data = ManipulateRecord().getWeekSumData(dayNumber: 1)
+            drawChart().drawBarChart(data: data, viewController: self)
+            setSumTimeText(data)
         case 3:
             drawChart().drawTimeChart(data: ManipulateRecord().getTimeChartData(), viewController: self)
         default:
             break
         }
+    }
+    
+    func setSumTimeText(_ data: [String: Double]) {
+        var allSumTime: Int = 0
+        for time in data.values {
+            allSumTime += Int(time)
+        }
+        self.sumTime.text = String(format: "合計%01dh%02dmin", allSumTime / 60, allSumTime % 60)
     }
     
 }
