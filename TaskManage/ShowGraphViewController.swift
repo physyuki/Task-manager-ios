@@ -12,7 +12,7 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     let userDefaults = UserDefaults.standard
     @IBOutlet weak var graphType: UITextField!
-    @IBOutlet weak var sumTime: UITextField!
+    @IBOutlet weak var allSumTime: UILabel!
     var pickerView: UIPickerView = UIPickerView()
     let TYPE: [String] = ["累積グラフ(直近1週間)", "合計グラフ(直近1週間)", "合計グラフ(本日)", "タイムチャート(直近1週間)"]
     
@@ -45,8 +45,7 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func initToRedraw() {
         loadView()
         graphType.textAlignment = .center
-        sumTime.textAlignment = .center
-        sumTime.borderStyle = .none
+        allSumTime.textAlignment = .center
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -102,7 +101,7 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         for time in data.values {
             allSumTime += Int(time)
         }
-        self.sumTime.text = String(format: "合計%01dh%02dmin", allSumTime / 60, allSumTime % 60)
+        self.allSumTime.text = String(format: "合計%01dh%02dmin", allSumTime / 60, allSumTime % 60)
     }
     
 }

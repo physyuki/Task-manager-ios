@@ -148,34 +148,37 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="bzK-eE-rnu" secondAttribute="bottom" constant="16" id="GJC-uU-uIO"/>
-                                    <constraint firstItem="bzK-eE-rnu" firstAttribute="leading" secondItem="kLo-KE-MSg" secondAttribute="leading" constant="92" id="QJe-q4-Yml"/>
-                                    <constraint firstItem="bzK-eE-rnu" firstAttribute="top" secondItem="kLo-KE-MSg" secondAttribute="top" constant="48" id="usG-Rj-fqb"/>
-                                    <constraint firstItem="bzK-eE-rnu" firstAttribute="centerX" secondItem="kLo-KE-MSg" secondAttribute="centerX" id="xh6-7X-mXK"/>
+                                    <constraint firstItem="bzK-eE-rnu" firstAttribute="top" secondItem="kLo-KE-MSg" secondAttribute="top" constant="48" id="9Oj-8w-1ZW"/>
+                                    <constraint firstAttribute="bottom" secondItem="bzK-eE-rnu" secondAttribute="bottom" constant="16" id="K9R-mz-g1D"/>
+                                    <constraint firstItem="bzK-eE-rnu" firstAttribute="centerX" secondItem="kLo-KE-MSg" secondAttribute="centerX" id="fa9-SX-w8h"/>
+                                    <constraint firstItem="bzK-eE-rnu" firstAttribute="leading" secondItem="kLo-KE-MSg" secondAttribute="leading" constant="92" id="skS-XK-XCp"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eo-E2-eKd">
-                                <rect key="frame" x="117" y="502" width="141" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JY-nj-psf">
+                                <rect key="frame" x="131" y="512" width="113" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Tyt-9G-Frr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kLo-KE-MSg" firstAttribute="centerX" secondItem="0eo-E2-eKd" secondAttribute="centerX" id="9M3-h1-czN"/>
-                            <constraint firstAttribute="trailing" secondItem="kLo-KE-MSg" secondAttribute="trailing" id="I2I-lo-Zg9"/>
-                            <constraint firstItem="0eo-E2-eKd" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="117" id="IL2-Ic-My0"/>
-                            <constraint firstItem="kLo-KE-MSg" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="lw6-CF-BnP"/>
-                            <constraint firstItem="kLo-KE-MSg" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="v4a-Nm-FAt"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="0eo-E2-eKd" secondAttribute="bottom" constant="86" id="yY6-sE-txk"/>
+                            <constraint firstItem="kLo-KE-MSg" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="8mP-Eb-vKF"/>
+                            <constraint firstItem="kLo-KE-MSg" firstAttribute="centerX" secondItem="1JY-nj-psf" secondAttribute="centerX" id="Bqk-Et-4wP"/>
+                            <constraint firstItem="1JY-nj-psf" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="131" id="CfH-UA-Jqr"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="1JY-nj-psf" secondAttribute="bottom" constant="85" id="KAo-Bg-HBw"/>
+                            <constraint firstAttribute="trailing" secondItem="kLo-KE-MSg" secondAttribute="trailing" id="PTS-WQ-7VD"/>
+                            <constraint firstItem="kLo-KE-MSg" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="TK0-lU-pxM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="統計" image="graph" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="allSumTime" destination="1JY-nj-psf" id="QZa-xb-Sey"/>
                         <outlet property="graphType" destination="bzK-eE-rnu" id="5CD-lx-k43"/>
-                        <outlet property="sumTime" destination="0eo-E2-eKd" id="8rk-RY-bvM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
