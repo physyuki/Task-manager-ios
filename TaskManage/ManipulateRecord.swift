@@ -26,14 +26,14 @@ class ManipulateRecord {
         names.forEach { name in try! realm.write() {realm.delete(name)}}
     }
     
-    func getRecord(name: String) -> [String] {
-        var records = [String]()
+    func getRecord(name: String) -> [[String]] {
+        var records = [[String]]()
         let results = realm.objects(Record.self).filter("name like '\(name)'")
         for result in results {
             let f = FormatTime().logFormat()
             let start = f.string(from: result.start)
             let stop = f.string(from: result.stop)
-            records.append(String(describing: start) + "〜" + String(describing: stop))
+            records.append([String(describing: start), String(describing: stop)])
         }
         return records
     }

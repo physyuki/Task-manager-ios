@@ -17,6 +17,7 @@
 		1BBA253E1FE5294500BB9932 /* ManipulateRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA253D1FE5294500BB9932 /* ManipulateRecord.swift */; };
 		1BBA25401FE53C2C00BB9932 /* drawChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBA253F1FE53C2C00BB9932 /* drawChart.swift */; };
 		1BCECF7B2001A70A0085B807 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCECF7A2001A70A0085B807 /* CustomTextField.swift */; };
+		1BCECF7D200AC0460085B807 /* PastRecordCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCECF7C200AC0450085B807 /* PastRecordCustomTableViewCell.swift */; };
 		1BD2D8161FE4A41D00F9EBD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2D8151FE4A41D00F9EBD2 /* AppDelegate.swift */; };
 		1BD2D81A1FE4A41D00F9EBD2 /* ShowGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2D8191FE4A41D00F9EBD2 /* ShowGraphViewController.swift */; };
 		1BD2D81D1FE4A41D00F9EBD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD2D81B1FE4A41D00F9EBD2 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		1BBA253D1FE5294500BB9932 /* ManipulateRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManipulateRecord.swift; sourceTree = "<group>"; };
 		1BBA253F1FE53C2C00BB9932 /* drawChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawChart.swift; sourceTree = "<group>"; };
 		1BCECF7A2001A70A0085B807 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		1BCECF7C200AC0450085B807 /* PastRecordCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRecordCustomTableViewCell.swift; sourceTree = "<group>"; };
 		1BD2D8121FE4A41D00F9EBD2 /* TaskManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD2D8151FE4A41D00F9EBD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BD2D8191FE4A41D00F9EBD2 /* ShowGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGraphViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				1BBA25371FE4D90F00BB9932 /* CustomTableViewCell.swift */,
 				1BD2D81B1FE4A41D00F9EBD2 /* Main.storyboard */,
 				1B4377231FFDF3C60062ECCC /* PastRecordViewController.swift */,
+				1BCECF7C200AC0450085B807 /* PastRecordCustomTableViewCell.swift */,
 				1BBA253B1FE527CA00BB9932 /* Record.swift */,
 				1BD2D81E1FE4A41D00F9EBD2 /* Assets.xcassets */,
 				1BD2D8201FE4A41D00F9EBD2 /* LaunchScreen.storyboard */,
@@ -265,6 +268,7 @@
 				1BBA253E1FE5294500BB9932 /* ManipulateRecord.swift in Sources */,
 				1B5141821FE4C46C001DA2A5 /* ManipulateItem.swift in Sources */,
 				1B5141841FE4D231001DA2A5 /* RecordingViewController.swift in Sources */,
+				1BCECF7D200AC0460085B807 /* PastRecordCustomTableViewCell.swift in Sources */,
 				1B05815C1FE4B54000B3E2E4 /* ItemInfo.swift in Sources */,
 				1BBA25401FE53C2C00BB9932 /* drawChart.swift in Sources */,
 			);

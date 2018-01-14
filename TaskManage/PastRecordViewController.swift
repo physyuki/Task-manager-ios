@@ -13,8 +13,9 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var itemNameField: UITextField!
     var pickerView: UIPickerView = UIPickerView()
     var nameList = [String]()
-    var recordList = [String]()
-    
+    var recordList = [[String]]()
+
+    //項目選択のピッカーはデリゲートを使用して挙動を実装
     func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {return nameList.count}
@@ -36,15 +37,25 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {return recordList.count}
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as UITableViewCell
-        cell.textLabel?.text = recordList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! PastRecordCustomTableViewCell
+        //日付編集のピッカーを実装
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: cell, action: #selector(cell.tappedDone))
+        toolbar.setItems([doneItem], animated: true)
+        cell.timePickerView.addTarget(cell, action: #selector(cell.didSelectRow), for: .valueChanged)
+        cell.timePickerView.locale = Locale(identifier: "ja_JP")
+        cell.startTime.inputView = cell.timePickerView
+        cell.startTime.inputAccessoryView = toolbar
+        
+        cell.startTime.text = recordList[indexPath.row][0]
+        cell.stopTime.text = recordList[indexPath.row][1]
         return cell
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         itemNameField.textAlignment = .center
-        
+        //項目選択のピッカーを実装
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.showsSelectionIndicator = true
