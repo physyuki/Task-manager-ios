@@ -44,10 +44,12 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: cell, action: #selector(cell.tappedDone))
         toolbar.setItems([doneItem], animated: true)
         cell.timePickerView.addTarget(cell, action: #selector(cell.didSelectRow), for: .valueChanged)
-        cell.timePickerView.locale = Locale(identifier: "ja_JP")
         cell.startTime.inputView = cell.timePickerView
         cell.startTime.inputAccessoryView = toolbar
-        //ログのフォーマットを整えて表示
+        //日付編集のピッカーの初期設定
+        cell.timePickerView.locale = Locale(identifier: "ja_JP")
+        cell.timePickerView.date = recordList[indexPath.row][0]
+        //ピッカーに表示するログのフォーマットを設定
         let f = FormatTime().logFormat()
         let start = f.string(from: recordList[indexPath.row][0])
         let stop = f.string(from: recordList[indexPath.row][1])
