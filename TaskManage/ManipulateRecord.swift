@@ -26,21 +26,17 @@ class ManipulateRecord {
         names.forEach { name in try! realm.write() {realm.delete(name)}}
     }
     
-    func updateRecord(key: Int, preUpdate: String, update: Date) {
+    func updateRecord(key: Int, _ preUpdate: Date, update: Date) {
         let name = realm.object(ofType: ItemInfo.self, forPrimaryKey: key)!.name
-        let preUpdate = realm.objects(Record.self).filter("name like '\(name)'").filter("start like '\(preUpdate)'")
-        print(preUpdate)
-        //names.forEach { name in try! realm.write() {realm.delete(name)}}
+        let preUpdate = realm.objects(Record.self).filter("name like '\(name)' && start == %@", preUpdate)
+        try! realm.write() {preUpdate.first?.start = update}
     }
     
-    func getRecord(name: String) -> [[String]] {
-        var records = [[String]]()
+    func getRecord(name: String) -> [[Date]] {
+        var records = [[Date]]()
         let results = realm.objects(Record.self).filter("name like '\(name)'")
         for result in results {
-            let f = FormatTime().logFormat()
-            let start = f.string(from: result.start)
-            let stop = f.string(from: result.stop)
-            records.append([String(describing: start), String(describing: stop)])
+            records.append([result.start, result.stop])
         }
         return records
     }
@@ -224,7 +220,6 @@ class ManipulateRecord {
             data[item[0] as! String] = sumtime
             sumtime = [[[Double]]]()
         }
-        print(data)
         return data
     }
     

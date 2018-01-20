@@ -13,7 +13,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var itemNameField: UITextField!
     var pickerView: UIPickerView = UIPickerView()
     var nameList = [[Any]]()
-    var recordList = [[String]]()
+    var recordList = [[Date]]()
 
     //項目選択のピッカーはデリゲートを使用して挙動を実装
     func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
@@ -47,10 +47,14 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
         cell.timePickerView.locale = Locale(identifier: "ja_JP")
         cell.startTime.inputView = cell.timePickerView
         cell.startTime.inputAccessoryView = toolbar
-        
-        cell.startTime.text = recordList[indexPath.row][0]
+        //ログのフォーマットを整えて表示
+        let f = FormatTime().logFormat()
+        let start = f.string(from: recordList[indexPath.row][0])
+        let stop = f.string(from: recordList[indexPath.row][1])
+        cell.preUpdate = recordList[indexPath.row][0]
+        cell.startTime.text = String(describing: start)
         cell.startTime.tag = self.itemNameField.tag
-        cell.stopTime.text = recordList[indexPath.row][1]
+        cell.stopTime.text = String(describing: stop)
         return cell
     }
     
@@ -72,7 +76,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     override func viewWillAppear(_ animated: Bool) {
         nameList = ManipulateItem().getItemInfo()
         self.itemNameField.text = nameList[0][0] as? String
-        self.itemNameField.tag = nameList[0][1] as! Int//プライマリキーをタグに設定
+        self.itemNameField.tag = nameList[0][1] as! Int //プライマリキーをタグに設定
         recordList = ManipulateRecord().getRecord(name: itemNameField.text!)
         self.tableView.reloadData()
     }
