@@ -12,7 +12,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     
     @IBOutlet weak var itemNameField: UITextField!
     var pickerView: UIPickerView = UIPickerView()
-    var nameList = [String]()
+    var nameList = [[Any]]()
     var recordList = [[String]]()
 
     //項目選択のピッカーはデリゲートを使用して挙動を実装
@@ -20,10 +20,11 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {return nameList.count}
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {return nameList[row]}
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {return nameList[row][0] as? String}
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.itemNameField.text = nameList[row]
+        self.itemNameField.text = nameList[row][0] as? String
+        self.itemNameField.tag = nameList[row][1] as! Int
         recordList = ManipulateRecord().getRecord(name: itemNameField.text!)
         self.tableView.reloadData()
     }
@@ -48,6 +49,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
         cell.startTime.inputAccessoryView = toolbar
         
         cell.startTime.text = recordList[indexPath.row][0]
+        cell.startTime.tag = self.itemNameField.tag
         cell.stopTime.text = recordList[indexPath.row][1]
         return cell
     }
@@ -68,8 +70,9 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        nameList = ManipulateItem().getAllitemName()
-        self.itemNameField.text = nameList[0]
+        nameList = ManipulateItem().getItemInfo()
+        self.itemNameField.text = nameList[0][0] as? String
+        self.itemNameField.tag = nameList[0][1] as! Int//プライマリキーをタグに設定
         recordList = ManipulateRecord().getRecord(name: itemNameField.text!)
         self.tableView.reloadData()
     }

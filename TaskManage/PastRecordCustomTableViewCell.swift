@@ -16,15 +16,19 @@ class PastRecordCustomTableViewCell: UITableViewCell {
     
     //日付編集のピッカーはデリゲートを使用して挙動を実装しなくていい
     @objc func tappedDone() {
+        print(startTime.tag)
         print(timePickerView.date)
+        print(Date())
+        ManipulateRecord().updateRecord(key: startTime.tag, preUpdate: startTime.text!, update: timePickerView.date)
         //データベースの内容を書き換えて、ラベルの更新（リロードする方が良いか？）
+        //ピッカーの初期値も変更したいここでやるべきではないが
         self.startTime.endEditing(true)
     }
     
     @objc func didSelectRow(sender: UIDatePicker){
         print(sender.date)
         print("hoge")
-        //テキストフィールドに反映
+        //テキストフィールドに反映,しなてもいいかなー
         
         //        // フォーマットを生成.
         //        let myDateFormatter: DateFormatter = DateFormatter()

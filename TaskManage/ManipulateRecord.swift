@@ -26,6 +26,13 @@ class ManipulateRecord {
         names.forEach { name in try! realm.write() {realm.delete(name)}}
     }
     
+    func updateRecord(key: Int, preUpdate: String, update: Date) {
+        let name = realm.object(ofType: ItemInfo.self, forPrimaryKey: key)!.name
+        let preUpdate = realm.objects(Record.self).filter("name like '\(name)'").filter("start like '\(preUpdate)'")
+        print(preUpdate)
+        //names.forEach { name in try! realm.write() {realm.delete(name)}}
+    }
+    
     func getRecord(name: String) -> [[String]] {
         var records = [[String]]()
         let results = realm.objects(Record.self).filter("name like '\(name)'")
