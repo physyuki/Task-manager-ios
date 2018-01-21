@@ -27,15 +27,20 @@ class ManipulateRecord {
     }
     
     func updateRecord(key: Int, _ preUpdate: Date, update: Date, witchTime: String) {
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
         let name = realm.object(ofType: ItemInfo.self, forPrimaryKey: key)!.name
         switch witchTime {
         case "start":
             let preUpdate = realm.objects(Record.self).filter("name like '\(name)' && start == %@", preUpdate)
-            try! realm.write() {preUpdate.first?.start = update}
+            try! realm.write() {
+                preUpdate.first?.start = update
+            }
         case "stop":
             let preUpdate = realm.objects(Record.self).filter("name like '\(name)' && stop == %@", preUpdate)
-            try! realm.write() {preUpdate.first?.stop = update}
+            try! realm.write() {
+                let updateData = preUpdate.first
+                updateData?.stop = update
+                updateData?.date = FormatTime().dateFormat().string(from: update)
+            }
         default:
             break
         }
