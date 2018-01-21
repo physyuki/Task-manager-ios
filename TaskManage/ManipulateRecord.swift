@@ -27,6 +27,7 @@ class ManipulateRecord {
     }
     
     func updateRecord(key: Int, _ preUpdate: Date, update: Date, witchTime: String) {
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         let name = realm.object(ofType: ItemInfo.self, forPrimaryKey: key)!.name
         switch witchTime {
         case "start":

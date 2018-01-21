@@ -31,10 +31,6 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     
     @objc func done() {self.itemNameField.endEditing(true)}
     
-    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
-        return CGRect(x: x, y: y, width: width, height: height)
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {return recordList.count}
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,7 +58,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
         pickerView.dataSource = self
         pickerView.showsSelectionIndicator = true
         
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let toolbar = UIToolbar(frame: Coordinate().CGRectMake(0, 0, 0, 35))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
         toolbar.setItems([doneItem], animated: true)
         self.itemNameField.inputView = pickerView

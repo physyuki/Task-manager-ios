@@ -38,10 +38,6 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         selecteChart(selectedRow: pickerView.selectedRow(inComponent: 0))
     }
     
-    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
-        return CGRect(x: x, y: y, width: width, height: height)
-    }
-    
     func initToRedraw() {
         loadView()
         graphType.textAlignment = .center
@@ -51,7 +47,7 @@ class ShowGraphViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         pickerView.dataSource = self
         pickerView.showsSelectionIndicator = true
         
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let toolbar = UIToolbar(frame: Coordinate().CGRectMake(0, 0, 0, 35))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
         toolbar.setItems([doneItem], animated: true)
         self.graphType.inputView = pickerView

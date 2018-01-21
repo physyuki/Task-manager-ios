@@ -19,7 +19,7 @@ class PastRecordCustomTableViewCell: UITableViewCell {
     //日付編集のピッカーはデリゲートを使用して挙動を実装しなくていい
     
     func setStartPicker(initDisplay: Date) {
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let toolbar = UIToolbar(frame: Coordinate().CGRectMake(0, 0, 0, 35))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.tappedDone))
         doneItem.tag = 0
         toolbar.setItems([doneItem], animated: true)
@@ -32,7 +32,7 @@ class PastRecordCustomTableViewCell: UITableViewCell {
     }
     
     func setStopPicker(initDisplay: Date) {
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let toolbar = UIToolbar(frame: Coordinate().CGRectMake(0, 0, 0, 35))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.tappedDone))
         doneItem.tag = 1
         toolbar.setItems([doneItem], animated: true)
@@ -45,7 +45,6 @@ class PastRecordCustomTableViewCell: UITableViewCell {
     }
     
     @objc func tappedDone(sender: UIDatePicker) {
-        print(sender.tag)
         let f = FormatTime().logFormat()
         //データベースの内容を書き換えて、ラベルの更新
         switch sender.tag {
@@ -69,10 +68,6 @@ class PastRecordCustomTableViewCell: UITableViewCell {
     
     @objc func didSelectRow(sender: UIDatePicker){
         //日付変更中の処理
-    }
-    
-    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
-        return CGRect(x: x, y: y, width: width, height: height)
     }
     
 }
