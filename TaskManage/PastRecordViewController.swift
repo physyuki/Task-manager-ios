@@ -40,23 +40,17 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! PastRecordCustomTableViewCell
         //日付編集のピッカーを実装
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: cell, action: #selector(cell.tappedDone))
-        toolbar.setItems([doneItem], animated: true)
-        cell.timePickerView.addTarget(cell, action: #selector(cell.didSelectRow), for: .valueChanged)
-        cell.startTime.inputView = cell.timePickerView
-        cell.startTime.inputAccessoryView = toolbar
-        //日付編集のピッカーの初期設定
-        cell.timePickerView.locale = Locale(identifier: "ja_JP")
-        cell.timePickerView.date = recordList[indexPath.row][0]
+        cell.setStartPicker(initDisplay: recordList[indexPath.row][0])
+        cell.setStopPicker(initDisplay: recordList[indexPath.row][1])
         //ピッカーに表示するログのフォーマットを設定
         let f = FormatTime().logFormat()
         let start = f.string(from: recordList[indexPath.row][0])
-        let stop = f.string(from: recordList[indexPath.row][1])
-        cell.preUpdate = recordList[indexPath.row][0]
         cell.startTime.text = String(describing: start)
         cell.startTime.tag = self.itemNameField.tag
+        
+        let stop = f.string(from: recordList[indexPath.row][1])
         cell.stopTime.text = String(describing: stop)
+        cell.stopTime.tag = self.itemNameField.tag
         return cell
     }
     

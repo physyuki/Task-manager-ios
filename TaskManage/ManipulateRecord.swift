@@ -26,10 +26,18 @@ class ManipulateRecord {
         names.forEach { name in try! realm.write() {realm.delete(name)}}
     }
     
-    func updateRecord(key: Int, _ preUpdate: Date, update: Date) {
+    func updateRecord(key: Int, _ preUpdate: Date, update: Date, witchTime: String) {
         let name = realm.object(ofType: ItemInfo.self, forPrimaryKey: key)!.name
-        let preUpdate = realm.objects(Record.self).filter("name like '\(name)' && start == %@", preUpdate)
-        try! realm.write() {preUpdate.first?.start = update}
+        switch witchTime {
+        case "start":
+            let preUpdate = realm.objects(Record.self).filter("name like '\(name)' && start == %@", preUpdate)
+            try! realm.write() {preUpdate.first?.start = update}
+        case "stop":
+            let preUpdate = realm.objects(Record.self).filter("name like '\(name)' && stop == %@", preUpdate)
+            try! realm.write() {preUpdate.first?.stop = update}
+        default:
+            break
+        }
     }
     
     func getRecord(name: String) -> [[Date]] {
