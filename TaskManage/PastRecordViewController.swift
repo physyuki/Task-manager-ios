@@ -69,6 +69,7 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
         nameList = ManipulateItem().getItemInfo()
         self.itemNameField.text = nameList[0][0] as? String
         self.itemNameField.tag = nameList[0][1] as! Int //プライマリキーをタグに設定
+        pickerView.selectRow(0, inComponent: 0, animated: true)
         recordList = ManipulateRecord().getRecord(name: itemNameField.text!)
         self.tableView.reloadData()
     }
