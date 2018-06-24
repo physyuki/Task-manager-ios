@@ -40,8 +40,6 @@ class RecordingViewController: UITableViewController {
         alertController.addAction(okAction)
         alertController.addAction(cancelButton)
         present(alertController,animated: true,completion: nil)
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

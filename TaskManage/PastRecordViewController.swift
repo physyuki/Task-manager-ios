@@ -34,6 +34,24 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {return recordList.count}
     
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {return true}
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let alertController = UIAlertController(title: "注意", message: "一度削除すると元に戻せません", preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){
+            (action: UIAlertAction) in
+            let name = self.itemNameField.text
+            let start = self.recordList[indexPath.row][0]
+            self.recordList.remove(at: indexPath.row)//先にデータを更新する
+            ManipulateRecord().deleteRecord(name: name!, startTime: start)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)// それからテーブルの更新、こうしないと落ちる
+        }
+        let cancelButton = UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelButton)
+        present(alertController,animated: true,completion: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! PastRecordCustomTableViewCell
         //日付編集のピッカーを実装
