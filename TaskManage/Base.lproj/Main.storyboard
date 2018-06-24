@@ -90,7 +90,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-324.28785607196403"/>
         </scene>
-        <!--履歴-->
+        <!--Past Record View Controller-->
         <scene sceneID="A1K-GF-1tq">
             <objects>
                 <tableViewController id="peA-pR-ibi" customClass="PastRecordViewController" customModule="TaskManage" customModuleProvider="target" sceneMemberID="viewController">
@@ -154,14 +154,15 @@
                             <outlet property="delegate" destination="peA-pR-ibi" id="zYV-fC-JtX"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="履歴" image="log" id="sXc-8b-GXQ"/>
+                    <navigationItem key="navigationItem" id="hLl-1h-Ra3"/>
                     <connections>
                         <outlet property="itemNameField" destination="gyz-8a-VA3" id="1sO-O4-pP3"/>
+                        <outlet property="logNaviItem" destination="hLl-1h-Ra3" id="Upo-au-M5M"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huA-T8-GGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461.5999999999999" y="-324.28785607196403"/>
+            <point key="canvasLocation" x="2145" y="-324"/>
         </scene>
         <!--統計-->
         <scene sceneID="wg7-f3-ORb">
@@ -333,7 +334,7 @@
                         <segue destination="RPu-30-xSf" kind="relationship" relationship="viewControllers" id="ETC-eN-aj9"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="iTH-IP-tw4" kind="relationship" relationship="viewControllers" id="x0t-tY-uDY"/>
-                        <segue destination="peA-pR-ibi" kind="relationship" relationship="viewControllers" id="hvo-0t-7eL"/>
+                        <segue destination="STV-6n-aeR" kind="relationship" relationship="viewControllers" id="hvo-0t-7eL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -358,6 +359,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHz-H6-GtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1460.8" y="358.02098950524743"/>
+        </scene>
+        <!--履歴-->
+        <scene sceneID="RmB-DY-lvJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="STV-6n-aeR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="履歴" image="log" id="sXc-8b-GXQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="laT-jH-ay4">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="peA-pR-ibi" kind="relationship" relationship="rootViewController" id="Fac-c1-zgd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2C4-ZE-qyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1460.8" y="-324.7376311844078"/>
         </scene>
     </scenes>
     <resources>

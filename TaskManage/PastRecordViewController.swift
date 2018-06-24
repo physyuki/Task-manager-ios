@@ -11,6 +11,7 @@ import UIKit
 class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var itemNameField: UITextField!
+    @IBOutlet weak var logNaviItem: UINavigationItem!
     var pickerView: UIPickerView = UIPickerView()
     var nameList = [[Any]]()
     var recordList = [[Date]]()
@@ -53,6 +54,8 @@ class PastRecordViewController: UITableViewController, UIPickerViewDelegate, UIP
     override func viewDidLoad() {
         super.viewDidLoad()
         itemNameField.textAlignment = .center
+        logNaviItem.title = "履歴"
+        logNaviItem.rightBarButtonItem = editButtonItem
         //項目選択のピッカーを実装
         pickerView.delegate = self
         pickerView.dataSource = self
