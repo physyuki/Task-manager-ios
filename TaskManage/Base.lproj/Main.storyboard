@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-324.28785607196403"/>
         </scene>
-        <!--ログ-->
+        <!--履歴-->
         <scene sceneID="A1K-GF-1tq">
             <objects>
                 <tableViewController id="peA-pR-ibi" customClass="PastRecordViewController" customModule="TaskManage" customModuleProvider="target" sceneMemberID="viewController">
@@ -146,7 +146,7 @@
                             <outlet property="delegate" destination="peA-pR-ibi" id="zYV-fC-JtX"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="ログ" image="log" id="sXc-8b-GXQ"/>
+                    <tabBarItem key="tabBarItem" title="履歴" image="log" id="sXc-8b-GXQ"/>
                     <connections>
                         <outlet property="itemNameField" destination="gyz-8a-VA3" id="1sO-O4-pP3"/>
                     </connections>
