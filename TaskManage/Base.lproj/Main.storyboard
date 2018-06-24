@@ -212,7 +212,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
-        <!--記録-->
+        <!--Recording View Controller-->
         <scene sceneID="iA8-vI-TUm">
             <objects>
                 <tableViewController id="ijQ-a7-gtm" customClass="RecordingViewController" customModule="TaskManage" customModuleProvider="target" sceneMemberID="viewController">
@@ -220,16 +220,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Du6-Gn-80e">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Title" id="tgN-kJ-jTz"/>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="xYS-BB-VLX" customClass="CustomTableViewCell" customModule="TaskManage" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xYS-BB-VLX" id="AD0-ak-2Bh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -310,14 +303,14 @@
                             <outlet property="delegate" destination="ijQ-a7-gtm" id="MKd-MF-Dvu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="記録" image="record" id="y3I-xl-6WO"/>
+                    <navigationItem key="navigationItem" id="Fk9-D6-Vki"/>
                     <connections>
-                        <outlet property="naviItem" destination="tgN-kJ-jTz" id="ozy-er-aXE"/>
+                        <outlet property="naviItem" destination="Fk9-D6-Vki" id="Gyr-5X-boC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfM-hU-pwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461.5999999999999" y="358.4707646176912"/>
+            <point key="canvasLocation" x="2146" y="358"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -329,7 +322,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ijQ-a7-gtm" kind="relationship" relationship="viewControllers" id="ETC-eN-aj9"/>
+                        <segue destination="RPu-30-xSf" kind="relationship" relationship="viewControllers" id="ETC-eN-aj9"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="iTH-IP-tw4" kind="relationship" relationship="viewControllers" id="x0t-tY-uDY"/>
                         <segue destination="peA-pR-ibi" kind="relationship" relationship="viewControllers" id="hvo-0t-7eL"/>
@@ -338,6 +331,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--記録-->
+        <scene sceneID="YZv-m2-kg5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RPu-30-xSf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="記録" image="record" id="y3I-xl-6WO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O91-uN-oxL">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ijQ-a7-gtm" kind="relationship" relationship="rootViewController" id="Te3-yF-S0u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LHz-H6-GtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1460.8" y="358.02098950524743"/>
         </scene>
     </scenes>
     <resources>
