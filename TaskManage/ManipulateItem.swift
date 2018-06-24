@@ -32,6 +32,7 @@ class ManipulateItem {
     }
     
     func getItemInfo() -> [[Any]] {
+        print(Realm.Configuration.defaultConfiguration.fileURL!) //DBパス確認用
         var itemInfo = [[Any]]()
         let itemInfos = realm.objects(ItemInfo.self)
         for iteminfo in itemInfos {
