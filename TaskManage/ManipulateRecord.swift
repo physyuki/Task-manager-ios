@@ -48,7 +48,7 @@ class ManipulateRecord {
     
     func getRecord(name: String) -> [[Date]] {
         var records = [[Date]]()
-        let results = realm.objects(Record.self).filter("name like '\(name)'")
+        let results = realm.objects(Record.self).filter("name like '\(name)'").sorted(byKeyPath: "start", ascending: false)
         for result in results {
             records.append([result.start, result.stop])
         }
